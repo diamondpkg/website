@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1598.2086mm"
+   height="750mm"
+   viewBox="0 0 1598.2086 750"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="C:\Users\zvacu\Pictures\unify.png"
+   inkscape:export-xdpi="260.09601"
+   inkscape:export-ydpi="260.09601"
+   inkscape:version="0.92.0 r15299"
+   sodipodi:docname="unify-full-padding.svg">
+  <title
+     id="title6097">Unify</title>
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6027">
+      <stop
+         style="stop-color:#ff57c0;stop-opacity:1"
+         offset="0"
+         id="stop6023" />
+      <stop
+         style="stop-color:#0057a6;stop-opacity:1"
+         offset="1"
+         id="stop6025" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6027"
+       id="linearGradient6029"
+       x1="-17.711475"
+       y1="-224.28644"
+       x2="524.49274"
+       y2="317.18591"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6027"
+       id="linearGradient6065"
+       x1="6.7512927"
+       y1="-248.73633"
+       x2="563.20294"
+       y2="288.20029"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-26.211391,24.835556)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6027"
+       id="linearGradient6095"
+       x1="-19.460098"
+       y1="-223.90077"
+       x2="536.99158"
+       y2="313.03583"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.12374369"
+     inkscape:cx="3072.3939"
+     inkscape:cy="1379.3784"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="100"
+     fit-margin-left="100"
+     fit-margin-right="100"
+     fit-margin-bottom="100"
+     inkscape:window-width="1440"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Unify</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(125,328)">
+    <circle
+       style="fill:none;fill-opacity:1;stroke:url(#linearGradient6029);stroke-width:50;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4487"
+       cx="250"
+       cy="46.999996"
+       r="250" />
+    <g
+       aria-label="U"
+       style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient6065);fill-opacity:1;stroke:none;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+       id="text6033">
+      <path
+         d="m 249.82361,112.26388 q 11.99445,0 20.46112,-5.29167 8.46666,-5.29167 13.75833,-13.758332 5.29167,-8.819445 7.76111,-20.108333 2.46944,-11.288889 2.46944,-23.636111 V -79.294453 h 68.79167 V 49.469434 q 0,26.105555 -6.70278,49.03611 -6.70278,22.577776 -20.81389,39.158336 -14.11111,16.58055 -35.63055,26.10555 -21.16667,9.525 -50.09445,9.525 -29.98611,0 -51.50555,-9.87778 -21.16667,-10.23055 -34.925,-27.16388 -13.75833,-16.93334 -20.10833,-39.158337 -6.35,-22.577777 -6.35,-47.624999 V -79.294453 h 68.79166 V 49.469434 q 0,12.347222 2.46945,23.988888 2.46944,11.288889 7.76111,20.108333 5.29167,8.466665 13.40555,13.758335 8.46667,4.93889 20.46111,4.93889 z"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:352.777771px;font-family:Raleway;-inkscape-font-specification:'Raleway Heavy';fill:url(#linearGradient6065);fill-opacity:1;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path6203" />
+    </g>
+    <g
+       aria-label="NIFY"
+       style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient6095);fill-opacity:1;stroke:none;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+       id="text6069">
+      <path
+         d="M 649.72749,49.116657 V 172.2361 H 580.93583 V -78.236118 h 53.62222 L 735.09971,49.116657 V -78.236118 h 68.79167 V 172.2361 h -54.68056 z"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:352.777771px;font-family:Raleway;-inkscape-font-specification:'Raleway Heavy';fill:url(#linearGradient6095);fill-opacity:1;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path6194" />
+      <path
+         d="M 846.89719,172.2361 V -78.236118 h 68.79167 V 172.2361 Z"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:352.777771px;font-family:Raleway;-inkscape-font-specification:'Raleway Heavy';fill:url(#linearGradient6095);fill-opacity:1;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path6196" />
+      <path
+         d="M 958.51828,172.2361 V -78.236118 h 171.80282 v 59.972221 H 1027.3099 V 23.36388 h 83.9612 v 55.738888 h -83.9612 V 172.2361 Z"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:352.777771px;font-family:Raleway;-inkscape-font-specification:'Raleway Heavy';fill:url(#linearGradient6095);fill-opacity:1;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path6198" />
+      <path
+         d="m 1207.7558,-78.236118 44.8028,108.302776 45.8611,-108.302776 h 74.7889 L 1286.778,89.333323 V 172.2361 h -68.4389 V 88.627768 l -85.0194,-166.863886 z"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:352.777771px;font-family:Raleway;-inkscape-font-specification:'Raleway Heavy';fill:url(#linearGradient6095);fill-opacity:1;stroke-width:400;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path6200" />
+    </g>
+  </g>
+</svg>

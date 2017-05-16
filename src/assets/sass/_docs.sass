@@ -1,0 +1,44 @@
+html.docs
+  .lang
+    margin-right: 5px
+
+
+  .content
+    margin-top: 25px
+    font-size: 16px
+    padding-right: 25px
+
+  .toc-outer
+    padding-top: 0
+    
+    .toc
+      position: absolute
+      left: 10px
+
+  .is-position-fixed
+    padding-top: 10px
+
+  progress
+    +block
+    -moz-appearance: none
+    -webkit-appearance: none
+    border: none
+    display: block
+    height: 2px
+    overflow: hidden
+    padding: 0
+    width: 100%
+    transition: width .5s ease, opacity 0.25s ease
+    &::-webkit-progress-bar
+      background-color: $border
+    &::-webkit-progress-value
+      background-color: $blue
+    &::-moz-progress-bar
+      background-color: $blue
+
+
+  .hidden
+    opacity: 0
+  
+  .footer
+    transition: opacity 0.25s linear
