@@ -30,6 +30,8 @@ import PackagePageComponent from './components/pages/Package';
 import PackageSearchPageComponent from './components/pages/PackageSearch';
 import UserPageComponent from './components/pages/User';
 import DocsUnknownRoutePageComponent from './components/pages/DocsUnknownRoute';
+import LogInPageComponent from './components/pages/LogIn';
+import RegisterPageComponent from './components/pages/Register';
 import NotFoundPageComponent from './components/pages/NotFound';
 import ContainerComponent from './components/Container';
 import SlideComponent from './components/Slide';
@@ -80,6 +82,9 @@ const router = new VueRouter({
 
     { path: '/user', name: 'user-default', redirect: '/' },
     { path: '/user/:user', name: 'user', component: UserPageComponent },
+
+    { path: '/login', name: 'login', component: LogInPageComponent },
+    { path: '/register', name: 'register', component: RegisterPageComponent },
 
     // Catch-all
     { path: '/docs/*', component: DocsUnknownRoutePageComponent },

@@ -9,17 +9,23 @@
           <div class="column is-9">
             <section class="hero">
               <div class="hero-body">
-                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ email }}</small></h1>
+                <article class="message is-warning" v-if="signedIn && !verified">
+                  <div class="message-body">
+                    Please check your email for a verification email.
+                  </div>
+                </article>
 
-                  <br>
+                <h1 class="title"><strong>{{ name }}</strong> <small>{{ email }}</small></h1>
 
-                  <h2 class="subtitle is-4 no-margin">Packages</h2>
-                  <hr>
-                  <ul>
-                    <li v-for="package of packages">
-                      <router-link :to="{ path: `/package/${package}` }">{{ package }}</router-link>
-                    </li>
-                  </ul>
+                <br>
+
+                <h2 class="subtitle is-4 no-margin">Packages</h2>
+                <hr>
+                <ul>
+                  <li v-for="package of packages">
+                    <router-link :to="{ path: `/package/${package}` }">{{ package }}</router-link>
+                  </li>
+                </ul>
               </div>
             </section>
           </div>
@@ -45,6 +51,7 @@
   import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
+  import { registry } from '@/util';
 
   const data = {
     moment,
@@ -52,6 +59,8 @@
     email: '',
     avatar: '',
     packages: [],
+    signedIn: false,
+    verified: false,
     loaded: false,
   };
 
@@ -70,13 +79,15 @@
       handleRoute(route) {
         this.$data.loaded = false;
 
-        request.get(`https://registry.hackzzila.com/user/${this.$route.params.user}`).end((err, res) => {
+        request.get(`${registry()}/v1/user/${this.$route.params.user}`).end((err, res) => {
           if (err) return;
           this.$data.name = res.body.username;
           this.$data.email = res.body.email;
           this.$data.packages = res.body.packages;
+          this.$data.verified = res.body.verified;
           this.$data.avatar = `http://www.gravatar.com/avatar/${
-            crypto.createHash('md5').update(res.body.email, 'utf8').digest('hex')}?s=512`;
+            crypto.createHash('md5').update(res.body.email, 'utf8').digest('hex')}?s=512&d=retro`;
+          this.$data.signedIn = res.body.username === (localStorage.user ? JSON.parse(localStorage.user).username : null);
           this.$data.loaded = true;
         });
 

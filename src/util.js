@@ -1,5 +1,10 @@
 import { resolve as resolveURL } from 'url';
 
+// Gets the registry to use.
+export function registry() {
+  return localStorage.registry || 'https://registry.hackzzila.com';
+}
+
 // Highlights an element with highlight.js, delaying until it's loaded
 export function hljs(el) {
   if (window.hljs) {

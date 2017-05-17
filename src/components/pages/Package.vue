@@ -76,6 +76,7 @@
   import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
+  import { registry } from '@/util';
 
   const data = {
     moment,
@@ -103,7 +104,7 @@
     methods: {
       handleRoute(route) {
         this.$data.loaded = false;
-        request.get(`https://registry.hackzzila.com/package/${this.$route.params.package}`).end((err, res) => {
+        request.get(`${registry()}/v1/package/${this.$route.params.package}`).end((err, res) => {
           if (err) return;
           this.$data.name = res.body.name;
           this.$data.readme = Vue.filter('marked')(res.body.versions[res.body.tags.latest].readme);

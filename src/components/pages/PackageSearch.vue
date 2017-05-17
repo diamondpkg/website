@@ -47,6 +47,7 @@
   import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
+  import { registry } from '@/util';
 
   const data = {
     moment,
@@ -62,7 +63,7 @@
   async function getDefault(self) {
     const promises = [];
     for (const name of defaultPackages) {
-      promises.push(request.get(`https://registry.hackzzila.com/package/${name}`));
+      promises.push(request.get(`${registry()}/v1/package/${name}`));
     }
 
     const pkgs = [];
@@ -102,7 +103,7 @@
         $(() => {
           $('#search').keyup((event) => {
             if ($(event.target).val().trim() === '') return getDefault(this);
-            request.get(`https://registry.hackzzila.com/search/package?q=${$(event.target).val()}`).end((err, res) => {
+            request.get(`${registry()}/v1/search/package?q=${$(event.target).val()}`).end((err, res) => {
               if (err) return;
               const pkgs = [];
               for (const pkg of res.body) {

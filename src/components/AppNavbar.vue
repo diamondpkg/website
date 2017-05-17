@@ -21,6 +21,17 @@
         <router-link to="/docs" class="nav-item is-tab is-hidden-tablet">Docs</router-link>
         <router-link to="/packages" class="nav-item is-tab is-hidden-tablet">Packages</router-link>
         <router-link to="/unify" class="nav-item is-tab is-hidden-tablet">Unify</router-link>
+
+        <router-link :to="`/user/${user.username}`" class="nav-item is-tab" v-if="user">
+          <figure class="image is-16x16" style="margin-right: 8px;">
+            <img :src="avatar">
+          </figure>
+          Profile
+        </router-link>
+        <a class="nav-item is-tab" id="logout" v-if="user">Log out</a>
+        <router-link to="/login" class="nav-item is-tab" v-else>Log In</router-link>
+        <router-link to="/register" class="nav-item is-tab" v-if="!user">Register</router-link>
+        
         <a class="nav-item" href="https://discord.gg/ZeX76Zy" target="_blank">
           <span class="is-tab is-hidden-tablet">Discord</span>
           <span class="icon is-hidden-mobile">
@@ -43,6 +54,7 @@
 
 <script>
   import $ from 'jquery';
+  import crypto from 'crypto';
 
   export default {
     name: 'navbar',
@@ -52,11 +64,26 @@
       },
     },
 
+    data() {
+      if (localStorage.user) {
+        return {
+          user: JSON.parse(localStorage.user),
+          avatar: `http://www.gravatar.com/avatar/${crypto.createHash('md5').update(JSON.parse(localStorage.user).email, 'utf8').digest('hex')}?d=retro`,
+        };
+      }
+      return {};
+    },
+
     methods: {
       handleRoute() {
         $(() => {
           $('.nav-toggle').click(() => {
             $('.nav-toggle, .nav-menu').toggleClass('is-active');
+          });
+
+          $('#logout').click(() => {
+            delete localStorage.user;
+            this.$router.push('/');
           });
         });
       },
