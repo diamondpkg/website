@@ -3,20 +3,35 @@
     <app-navbar />
 
     <div class="wrapper">
+      <div id="badge-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Badge</p>
+            <button id="badge-modal-close" class="delete"></button>
+          </header>
+          <section class="modal-card-body">
+            <h2 class="subtitle is-4 no-margin">URL</h2>
+            <pre><code class="nohighlight">https://registry.hackzzila.com/package/{{name}}/badge/full.svg</code></pre>
+
+            <br>
+
+            <h2 class="subtitle is-4 no-margin">Markdown</h2>
+            <pre><code class="nohighlight">[![diamond](https://registry.hackzzila.com/package/{{name}}/badge/full.svg)](https://diamond.js.org/#/package/{{name}})</code></pre>
+          </section>
+        </div>
+      </div>
+
       <loading class="loading animated" v-if="!loaded" v-bind:class="{ fadeOut: loaded }"/>
       <div class="container animated" v-else v-bind:class="{ fadeIn: loaded }">
         <div class="columns">
           <div class="column is-9">
             <section class="hero">
               <div class="hero-body">
-                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
-                  <h2 class="subtitle">{{ description }}</h2>
-
-                  <br>
-
-                  <h2 class="subtitle is-4 no-margin">Readme</h2>
-                  <hr>
-                  <div class="content readme" v-html="readme"></div>
+                <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
+                <h2 class="subtitle">{{ description }}</h2>
+                <hr>
+                <div class="content readme" v-html="readme"></div>
               </div>
             </section>
           </div>
@@ -26,6 +41,11 @@
               <div class="hero-body">
                 <h2 class="subtitle is-4 no-margin">Use</h2>
                 <pre><code class="nohighlight">$ diamond install {{ name }}</code></pre>
+
+                <br>
+
+                <h2 class="subtitle is-4 no-margin">Badge</h2>
+                <img :src="`https://registry.hackzzila.com/package/${name}/badge/full.svg`" alt="Badge" id="badge" class="image">
 
                 <br>
 
@@ -71,6 +91,7 @@
 </template>
 
 <script>
+  import $ from 'jquery';
   import Vue from 'vue';
   import moment from 'moment';
   import request from 'superagent/superagent';
@@ -114,6 +135,16 @@
           this.$data.authors = res.body.authors;
           this.$data.tags = res.body.tags;
           this.$data.loaded = true;
+
+          $(() => {
+            $('#badge').click(() => {
+              $('#badge-modal').addClass('is-active');
+            });
+
+            $('#badge-modal-close').click(() => {
+              $('#badge-modal').removeClass('is-active');
+            });
+          });
         });
 
         // Redirect to a default route
@@ -145,20 +176,20 @@
     left: 50%
     transform: translate(-50%, -50%)
 
+  #badge
+    cursor: pointer
+
   ul.margin-left
     margin-left: 20px
 
   .subtitle.no-margin
-    margin-bottom: 5px
+    margin-bottom: 10px
 
   .table.no-margin
     margin-bottom: 0
 
   td
     width: 75%
-
-  hr
-    margin-top: 0
 
   .column.right
     border-left: 1px solid #dbdbdb

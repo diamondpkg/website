@@ -7,7 +7,7 @@
         <div class="hero-body">
           <div class="container">
             <h1 class="title main-text">
-              Dependency management built for Sass, Less, and CSS.
+              Dependency management built for Sass, Less, Stylus, and CSS.
             </h1>
             <div class="bottom">
               <a class="button is-info is-outlined get-started" href="docs">Get Started</a>
