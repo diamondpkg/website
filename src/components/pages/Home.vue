@@ -100,11 +100,18 @@
 
       <section class="hero is-medium is-info">
         <div class="hero-body">
-          <div class="container">
-            <h2 class="title main-text bottom-text">
-              What are you waiting for?
-            </h2>
-            <a class="button is-info is-outlined get-started bottom-text" href="docs">Get Started</a>
+          <div class="container has-text-centered">
+            <div class="columns">
+              <div class="column">
+                <h2 class="title main-text bottom-text">
+                  What are you waiting for?
+                </h2>
+              </div>
+
+              <div class="column is-narrow-desktop">
+                <a class="button is-info is-outlined get-started bottom-text" href="docs">Get Started</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -137,17 +144,14 @@
     text-shadow: darken($blue, 20%) 5px 5px 0px
     font-size: 4em
 
-    &.bottom-text
-      display: inline
-      float: left
-
   a.get-started
     border-color: darken($blue, 20%) !important
     font-size: 2em
     color: white !important
+    transition: border-color 100ms ease-in-out
 
-    &.bottom-text
-      float: right
+    &:hover
+      border-color: white !important
 
   .bottom
     margin-top: 50px !important
