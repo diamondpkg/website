@@ -31,6 +31,7 @@
                 <div class="is-hidden-tablet">
                   <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
                   <h2 class="subtitle main">{{ description }}</h2>
+                  <hr>
                 </div>
 
                 <div class="content readme" v-html="readme"></div>
