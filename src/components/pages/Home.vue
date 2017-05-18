@@ -10,7 +10,7 @@
               Dependency management built for Sass, Less, Stylus, and CSS.
             </h1>
             <div class="bottom">
-              <a class="button is-info is-outlined get-started" href="docs">Get Started</a>
+              <router-link to="/docs" class="button is-info is-outlined get-started">Get Started</router-link>
               <h2 class="subtitle sub-text">
                 <b>Install: </b>
                 <code>npm i -g diamondpkg</code>
@@ -109,7 +109,7 @@
               </div>
 
               <div class="column is-narrow-desktop">
-                <a class="button is-info is-outlined get-started bottom-text" href="docs">Get Started</a>
+                <router-link to="/docs" class="button is-info is-outlined get-started bottom-text">Get Started</router-link>
               </div>
             </div>
           </div>

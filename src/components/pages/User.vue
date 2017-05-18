@@ -15,10 +15,6 @@
                   </div>
                 </article>
 
-                <h1 class="title"><strong>{{ name }}</strong> <small>{{ email }}</small></h1>
-
-                <br>
-
                 <h2 class="subtitle is-4 no-margin">Packages</h2>
                 <hr>
                 <ul>
@@ -33,7 +29,11 @@
           <div class="column right">
             <section class="hero">
               <div class="hero-body">
-                <img class="image" :src="avatar" alt="avatar">
+                <div class="rcol">
+                  <img class="image" :src="avatar" alt="avatar">
+                  <h1 class="title"><strong>{{ name }}</strong></h1>
+                  <p>{{ email }}</p>
+                </div>
               </div>
             </section>
           </div>
@@ -137,7 +137,13 @@
     margin-bottom: 5px
 
   img
-    height: 250px
+    margin-bottom: 20px
+
+  h1.title
+    margin-bottom: 5px
+
+  .rcol
+    width: 250px
     display: block
     margin: 0 auto
 

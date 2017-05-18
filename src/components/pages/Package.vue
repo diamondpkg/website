@@ -28,9 +28,6 @@
           <div class="column is-9">
             <section class="hero">
               <div class="hero-body">
-                <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
-                <h2 class="subtitle">{{ description }}</h2>
-                <hr>
                 <div class="content readme" v-html="readme"></div>
               </div>
             </section>
@@ -39,6 +36,9 @@
           <div class="column right">
             <section class="hero">
               <div class="hero-body">
+                <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
+                <h2 class="subtitle main">{{ description }}</h2>
+
                 <h2 class="subtitle is-4 no-margin">Use</h2>
                 <pre><code class="nohighlight">$ diamond install {{ name }}</code></pre>
 
@@ -182,6 +182,9 @@
   ul.margin-left
     margin-left: 20px
 
+  .subtitle.main
+    margin-bottom: 2em
+
   .subtitle.no-margin
     margin-bottom: 10px
 
@@ -190,7 +193,4 @@
 
   td
     width: 75%
-
-  .column.right
-    border-left: 1px solid #dbdbdb
 </style>
