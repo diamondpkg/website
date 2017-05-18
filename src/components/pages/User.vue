@@ -6,7 +6,7 @@
       <loading class="loading animated" v-if="!loaded" v-bind:class="{ fadeOut: loaded }"/>
       <div class="container animated" v-else v-bind:class="{ fadeIn: loaded }">
         <div class="columns">
-          <div class="column is-9">
+          <div class="column is-9 is-hidden-mobile">
             <section class="hero">
               <div class="hero-body">
                 <article class="message is-warning" v-if="signedIn && !verified">
@@ -15,8 +15,7 @@
                   </div>
                 </article>
 
-                <h2 class="subtitle is-4 no-margin">Packages</h2>
-                <hr>
+                <h2 class="subtitle is-3 no-margin">Packages</h2>
                 <ul>
                   <li v-for="package of packages">
                     <router-link :to="{ path: `/package/${package}` }">{{ package }}</router-link>
@@ -146,7 +145,4 @@
     width: 250px
     display: block
     margin: 0 auto
-
-  .column.right
-    border-left: 1px solid #dbdbdb
 </style>

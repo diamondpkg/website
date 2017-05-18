@@ -28,6 +28,11 @@
           <div class="column is-9">
             <section class="hero">
               <div class="hero-body">
+                <div class="is-hidden-tablet">
+                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
+                  <h2 class="subtitle main">{{ description }}</h2>
+                </div>
+
                 <div class="content readme" v-html="readme"></div>
               </div>
             </section>
@@ -36,8 +41,12 @@
           <div class="column right">
             <section class="hero">
               <div class="hero-body">
-                <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
-                <h2 class="subtitle main">{{ description }}</h2>
+                <div class="is-hidden-mobile">
+                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
+                  <h2 class="subtitle main">{{ description }}</h2>
+                </div>
+
+                <hr class="is-hidden-tablet">
 
                 <h2 class="subtitle is-4 no-margin">Use</h2>
                 <pre><code class="nohighlight">$ diamond install {{ name }}</code></pre>

@@ -19,7 +19,7 @@
         <section class="hero search-result" v-for="package of packages">
           <div class="hero-body">
             <div class="columns">
-              <div v-if="package.logo" class="column is-narrow">
+              <div v-if="package.logo" class="column is-narrow is-hidden-mobile">
                 <img :src="package.logo" alt="logo" class="image is-64x64">
               </div>
 
