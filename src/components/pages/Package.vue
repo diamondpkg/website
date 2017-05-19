@@ -59,6 +59,22 @@
 
                 <br>
 
+                <h2 class="subtitle is-4 no-margin">Downloads</h2>
+                <div id="graph"></div>
+                <table class="table no-margin">
+                  <tbody>
+                    <tr>
+                      <td>In the Past Week</td>
+                      <td><strong>{{weeklyDownloads}}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Overall</td>
+                      <td><strong>{{downloads}}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+
                 <h2 class="subtitle is-4 no-margin">Authors</h2>
                 <ul class="margin-left">
                   <li v-for="author in authors">
@@ -104,6 +120,7 @@
   import $ from 'jquery';
   import Vue from 'vue';
   import moment from 'moment';
+  import Highcharts from 'highcharts';
   import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
@@ -118,6 +135,8 @@
     versions: {},
     authors: [],
     tags: {},
+    downloads: 0,
+    weeklyDownloads: 0,
     loaded: false,
   };
 
@@ -144,7 +163,24 @@
           this.$data.versions = res.body.versions;
           this.$data.authors = res.body.authors;
           this.$data.tags = res.body.tags;
+          this.$data.downloads = res.body.downloads;
+          this.$data.weeklyDownloads = res.body.weeklyDownloads;
           this.$data.loaded = true;
+
+          const now = new Date(Date.now());
+          const min = (((now.getFullYear() - 2016) * 12) + now.getMonth()) - 12;
+          // const currentEpoch = ((date.getFullYear() - 2016) * 12) + date.getMonth();
+
+          const arr = new Array(12).fill(0);
+          for (const date in res.body.monthlyDownloads) {
+            const d = new Date(date);
+            const epoch = ((d.getFullYear() - 2016) * 12) + d.getMonth();
+            if (epoch > min) {
+              arr[epoch - min] = res.body.monthlyDownloads[date];
+            }
+          }
+
+          console.log(arr);
 
           $(() => {
             $('#badge').click(() => {
@@ -153,6 +189,80 @@
 
             $('#badge-modal-close').click(() => {
               $('#badge-modal').removeClass('is-active');
+            });
+
+            Highcharts.chart('graph', {
+              chart: {
+                backgroundColor: null,
+                borderWidth: 1,
+                borderColor: '#3273dc',
+              },
+
+              title: {
+                text: null,
+              },
+
+              yAxis: {
+                title: {
+                  text: null,
+                },
+                labels: {
+                  enabled: false,
+                },
+                gridLineColor: 'transparent',
+                lineWidth: 0,
+                minorGridLineWidth: 0,
+                lineColor: 'transparent',
+                minorTickLength: 0,
+                tickLength: 0,
+              },
+
+              exporting: {
+                enabled: false,
+              },
+
+              legend: {
+                enabled: false,
+              },
+
+              tooltip: {
+                pointFormat: '{point.y}',
+                formatter() {
+                  const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+                  const date = new Date(this.x);
+                  return `${months[date.getMonth()]} ${date.getFullYear()}: <b>${this.y.toLocaleString()}</b>`;
+                },
+              },
+
+              xAxis: {
+                type: 'datetime',
+                labels: {
+                  enabled: false,
+                },
+                lineWidth: 0,
+                minorGridLineWidth: 0,
+                lineColor: 'transparent',
+                minorTickLength: 0,
+                tickLength: 0,
+              },
+
+              plotOptions: {
+                series: {
+                  pointStart: Date.UTC(Math.floor(min / 12) + 2016, (min % 12) + 2),
+                  pointIntervalUnit: 'month',
+                },
+              },
+
+              credits: {
+                enabled: false,
+              },
+
+              series: [{
+                color: '#3273dc',
+                name: 'Downloads',
+                data: arr,
+              }],
             });
           });
         });
@@ -177,6 +287,9 @@
 </script>
 
 <style lang="sass" scoped>
+  .readme
+    overflow-x: scroll
+
   .wrapper
     position: relative
 
@@ -188,6 +301,9 @@
 
   #badge
     cursor: pointer
+
+  #graph
+    height: 150px
 
   ul.margin-left
     margin-left: 20px
@@ -201,6 +317,7 @@
   .table.no-margin
     margin-bottom: 0
 
-  td
-    width: 75%
+  .table
+    td:nth-child(2)
+      text-align: right
 </style>

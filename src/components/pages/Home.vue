@@ -144,11 +144,18 @@
     text-shadow: darken($blue, 20%) 5px 5px 0px
     font-size: 4em
 
+    +mobile
+      font-size: 2em
+
   a.get-started
     border-color: darken($blue, 20%) !important
     font-size: 2em
     color: white !important
     transition: border-color 100ms ease-in-out
+
+    +mobile
+      font-size: 1.5em
+      width: 100%
 
     &:hover
       border-color: white !important
@@ -156,11 +163,17 @@
   .bottom
     margin-top: 50px !important
 
+    +mobile
+      margin-top: 1.5rem !important
+
     .sub-text
       margin-left: 20px
       display: inline
       font-size: 2em
       line-height: 2.285em
+
+      +mobile
+        display: none
 
       code
         background: darken($blue, 20%)

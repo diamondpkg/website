@@ -41,6 +41,7 @@ module.exports = {
     'no-plusplus': 0,
     'no-restricted-syntax': 0,
     'max-len': 0,
+    'guard-for-in': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
       objects: 'always-multiline',
