@@ -286,10 +286,13 @@
   };
 </script>
 
-<style lang="sass" scoped>
-  .readme
-    overflow-x: scroll
+<style lang="sass">
+  .readme table
+    display: block
+    overflow-x: auto
+</style>
 
+<style lang="sass" scoped>
   .wrapper
     position: relative
 
