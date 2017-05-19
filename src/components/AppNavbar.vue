@@ -108,14 +108,22 @@
     background-color: #333333
     border-bottom: 1px solid rgba(255,255,255,.1)
 
-    .nav-item
-      color: #ccc
+    +mobile
+      .nav-toggle:hover
+        background-color: lighten(#333333, 5%)
 
-      &:hover
-        color: white
+      .nav-toggle > span
+        background-color: white
 
-      .title
-        color: white
+    +desktop
+      .nav-item
+        color: #ccc
+
+        &:hover
+          color: white
+
+        .title
+          color: white
 
   /* .router-link-active
     border-bottom: 3px solid $primary !important
