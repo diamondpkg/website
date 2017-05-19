@@ -3,42 +3,52 @@
     <app-navbar />
 
     <div class="wrapper">
-      <div class="form">
-        <article class="message is-danger hidden" id="error">
-          <div class="message-body">
-            Server Error 
+      <div class="container">
+        <section class="hero">
+          <div class="hero-body">
+            <div class="columns">
+              <div class="column is-2 is-10-mobile is-offset-5 is-offset-1-mobile">
+                <div class="form">
+                  <article class="message is-danger hidden" id="error">
+                    <div class="message-body">
+                      Server Error 
+                    </div>
+                  </article>
+
+                  <h2 class="subtitle is-4">Log In</h2>
+                  <div class="field">
+                    <label class="label">Username</label>
+                    <p class="control has-icons-left">
+                      <input id="username" class="input" type="text" placeholder="hackzzila">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </p>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <p class="control has-icons-left">
+                      <input id="password" class="input" type="password" placeholder="••••••••••">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                      <p class="help is-danger hidden" id="invalid">Invalid Credentials</p>
+                    </p>
+                  </div>
+
+                  <br>
+
+                  <div class="field">
+                    <p class="control">
+                      <button class="button is-primary" id="button">Log In</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </article>
-
-        <h2 class="subtitle is-4">Log In</h2>
-        <div class="field">
-          <label class="label">Username</label>
-          <p class="control has-icons-left">
-            <input id="username" class="input" type="text" placeholder="hackzzila">
-            <span class="icon is-small is-left">
-              <i class="fa fa-user"></i>
-            </span>
-          </p>
-        </div>
-
-        <div class="field">
-          <label class="label">Password</label>
-          <p class="control has-icons-left">
-            <input id="password" class="input" type="password" placeholder="••••••••••">
-            <span class="icon is-small is-left">
-              <i class="fa fa-lock"></i>
-            </span>
-            <p class="help is-danger hidden" id="invalid">Invalid Credentials</p>
-          </p>
-        </div>
-
-        <br>
-
-        <div class="field">
-          <p class="control">
-            <button class="button is-primary" id="button">Log In</button>
-          </p>
-        </div>
+        </section>
       </div>
     </div>
 
@@ -101,15 +111,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
   @import '../../../node_modules/bulma/bulma.sass'
-
-  .wrapper
-    position: relative
-    
-  .form
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
 
   .hidden
     display: none
