@@ -8,5 +8,5 @@ test/unit/coverage
 test/e2e/reports
 selenium-debug.log
 
-deploy/deploy_key*
-!deploy/deploy_key.enc
+deploy/deploy-key*
+!deploy/deploy-key.enc
