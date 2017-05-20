@@ -192,7 +192,7 @@
             Highcharts.chart('graph', {
               chart: {
                 backgroundColor: null,
-                borderWidth: 1,
+                borderWidth: 2,
                 borderColor: '#3273dc',
               },
 
