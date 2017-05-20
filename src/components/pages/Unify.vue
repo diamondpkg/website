@@ -8,7 +8,7 @@
           <div class="hero-body">
             <div class="container">
               <h1 class="main-img has-text-centered">
-                <img src="../../assets/img/unify-full-nopadding.svg" alt="">
+                <img src="../../assets/unify-full-nopadding.svg" alt="">
               </h1>
               <h1 class="title main-text has-text-centered">
                 Sass, Less, and Stylus, unified.
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="column is-6">
-                  <img class="love-img" src="../../assets/img/unify-love-padding.svg" alt="Unify Loves">
+                  <img class="love-img" src="../../assets/unify-love-padding.svg" alt="Unify Loves">
                 </div>
               </div>
             </div>

@@ -180,8 +180,6 @@
             }
           }
 
-          console.log(arr);
-
           $(() => {
             $('#badge').click(() => {
               $('#badge-modal').addClass('is-active');
@@ -227,12 +225,6 @@
 
               tooltip: {
                 pointFormat: '{point.y}',
-                formatter() {
-                  const months = ['January', 'February', 'March', 'April', 'May', 'June',
-                    'July', 'August', 'September', 'October', 'November', 'December'];
-                  const date = new Date(this.x);
-                  return `${months[date.getMonth()]} ${date.getFullYear()}: <b>${this.y.toLocaleString()}</b>`;
-                },
               },
 
               xAxis: {
@@ -249,7 +241,7 @@
 
               plotOptions: {
                 series: {
-                  pointStart: Date.UTC(Math.floor(min / 12) + 2016, (min % 12) + 2),
+                  pointStart: Date.UTC(Math.floor(min / 12) + 2016, (min % 12) + 1),
                   pointIntervalUnit: 'month',
                 },
               },

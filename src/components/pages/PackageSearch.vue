@@ -43,14 +43,12 @@
 
 <script>
   import $ from 'jquery';
-  import moment from 'moment';
   import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
   import { registry } from '@/util';
 
   const data = {
-    moment,
     packages: [],
   };
 

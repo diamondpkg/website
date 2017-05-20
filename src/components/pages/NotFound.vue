@@ -4,7 +4,7 @@
       <div class="hero-body">
         <div class="container">
           <div class="center">
-            <img src="../../assets/img/Diamond.svg" alt="Diamond">
+            <img src="../../assets/Diamond.svg" alt="Diamond">
             <h1 class="title is-1">No diamonds here!</h1>
             <router-link to="/">Go back home.</router-link>
           </div>

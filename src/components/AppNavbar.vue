@@ -3,7 +3,7 @@
     <div class="container">
       <div class="nav-left">
         <router-link to="/" class="nav-item">
-          <img src="../assets/img/Diamond.png" alt="Bulma logo">
+          <img src="../assets/Diamond.png" alt="Bulma logo">
           <h4 class="title is-4">&nbsp;diamond</h4>
         </router-link>
         <router-link to="/" class="nav-item is-tab is-hidden-mobile">Home</router-link>
