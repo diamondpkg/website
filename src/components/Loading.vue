@@ -13,7 +13,6 @@
 
 <style lang="scss" scoped>
   @import '../styles/theming';
-
   .sk-folding-cube {
     display: inline-block;
     width: 40px;
@@ -22,7 +21,6 @@
             transform: rotateZ(45deg);
     background: $color-primary;
   }
-
   .sk-folding-cube .sk-cube {
     float: left;
     width: 50%;
@@ -85,7 +83,6 @@
       opacity: 0;
     }
   }
-
   @keyframes sk-foldCubeAngle {
     0%, 10% {
       -webkit-transform: perspective(140px) rotateX(-180deg);

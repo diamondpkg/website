@@ -11,6 +11,8 @@
 </script>
 
 <style lang="sass">
+  @import 'styles/bulma'
+
   html 
     height: 100%
   

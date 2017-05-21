@@ -133,7 +133,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-  @import '../../../node_modules/bulma/bulma.sass'
+  @import '../../styles/bulma'
 
   .lang
     margin-right: 5px
@@ -143,6 +143,7 @@
     text-transform: uppercase
     text-shadow: darken($blue, 20%) 5px 5px 0px
     font-size: 4em
+    font-weight: 900
 
     +mobile
       font-size: 2em

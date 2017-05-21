@@ -1,10 +1,25 @@
 <template>
-  <div class="docs-out">
-    <app-navbar docs=true />
+  <div class="docs">
+    <app-navbar />
 
-    <div id="docs" class="docs-in">
-      <docs-navbar :sources="sources" :source="source" />
-      <router-view :source="source" :tag="tag" />
+    <div class="wrapper">
+      <page-title text="Documentation" />
+
+      <div class="container">
+        <section class="hero">
+          <div class="hero-body">
+            <div class="tile is-ancestor">
+              <div class="tile is-parent is-4" v-for="page in pages">
+                <article class="tile is-child box">
+                  <p class="title">{{ page.title }}</p>
+                  <p class="subtitle">{{ page.desc }}</p>
+                  <router-link :to="page.path" append>Read more</router-link>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <app-footer />
@@ -12,98 +27,13 @@
 </template>
 
 <script>
-  import AppNavbar from '@/components/AppNavbar';
-  import AppFooter from '@/components/AppFooter';
-  import MainSource from '../../data/MainSource';
-  import UnifySource from '../../data/UnifySource';
-  import DocsNavbar from '../docs/Navbar';
+  import docs from '../../docs';
 
   export default {
-    name: 'documentation',
-    components: {
-      DocsNavbar,
-      AppNavbar,
-      AppFooter,
-    },
+    name: 'docmentation',
 
     data() {
-      return {
-        sources: {
-          [MainSource.id]: MainSource,
-          [UnifySource.id]: UnifySource,
-        },
-        source: MainSource,
-        tag: MainSource.defaultTag,
-        docs: true,
-      };
-    },
-
-    methods: {
-      setSource(id) {
-        this.source = this.sources[id];
-      },
-
-      setTag(tag) {
-        this.tag = tag;
-        this.source.recentTag = tag;
-      },
-
-      handleRoute(route) {
-        // Set the source, or redirect to a default route
-        if (route.params.source && this.sources[route.params.source]) {
-          this.setSource(route.params.source);
-        } else {
-          this.$router.replace({
-            name: 'docs-file',
-            params: {
-              source: MainSource.id,
-              tag: MainSource.defaultTag,
-              category: MainSource.defaultFile.category,
-              file: MainSource.defaultFile.id,
-            },
-          });
-          return;
-        }
-
-        // Set the tag, or redirect to a default route
-        if (route.params.tag) {
-          this.setTag(route.params.tag);
-        } else {
-          this.$router.replace({
-            name: 'docs-file',
-            params: {
-              source: this.source.id,
-              tag: this.source.recentTag || this.source.defaultTag,
-              category: this.source.defaultFile.category,
-              file: this.source.defaultFile.id,
-            },
-          });
-          return;
-        }
-
-        // Redirect to a default route
-        if (!route.params.file && !route.params.class && !route.params.typedef && route.name !== 'docs-search') {
-          this.$router.replace({
-            name: 'docs-file',
-            params: {
-              source: this.source.id,
-              tag: this.tag,
-              category: this.source.defaultFile.category,
-              file: this.source.defaultFile.id,
-            },
-          });
-        }
-      },
-    },
-
-    watch: {
-      $route(to) {
-        this.handleRoute(to);
-      },
-    },
-
-    created() {
-      this.handleRoute(this.$route);
+      return { pages: docs };
     },
   };
 </script>

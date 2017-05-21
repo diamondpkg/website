@@ -6,24 +6,7 @@
       <loading class="loading animated" v-if="!loaded" v-bind:class="{ fadeOut: loaded }"/>
       <div class="container animated" v-else v-bind:class="{ fadeIn: loaded }">
         <div class="columns">
-          <div class="column is-9 is-hidden-mobile">
-            <section class="hero">
-              <div class="hero-body">
-                <article class="message is-warning" v-if="signedIn && !verified">
-                  <div class="message-body">
-                    Please check your email for a verification email.
-                  </div>
-                </article>
-
-                <h2 class="subtitle is-3 no-margin">Packages</h2>
-                <ul>
-                  <li v-for="package of packages">
-                    <router-link :to="{ path: `/package/${package}` }">{{ package }}</router-link>
-                  </li>
-                </ul>
-              </div>
-            </section>
-          </div>
+          <user-packages :packages="packages" class="is-hidden-mobile" />
 
           <div class="column right">
             <section class="hero">
@@ -36,6 +19,8 @@
               </div>
             </section>
           </div>
+
+         <user-packages :packages="packages" class="is-hidden-tablet" />
         </div>
       </div>
     </div>
@@ -49,6 +34,7 @@
   import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
+  import UserPackages from '@/components/UserPackages';
   import { registry } from '@/util';
 
   const data = {
@@ -66,6 +52,7 @@
     components: {
       AppNavbar,
       AppFooter,
+      UserPackages,
     },
 
     data() {
@@ -108,6 +95,8 @@
 </script>
 
 <style lang="sass" scoped>
+  @import '../../styles/bulma'
+
   .wrapper
     position: relative
 
@@ -140,7 +129,7 @@
     margin-bottom: 5px
 
   .rcol
-    width: 250px
+    max-width: 250px
     display: block
     margin: 0 auto
 </style>

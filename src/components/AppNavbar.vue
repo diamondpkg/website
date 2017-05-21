@@ -100,33 +100,3 @@
     },
   };
 </script>
-
-<style lang="sass" scoped>
-  @import '../../node_modules/bulma/bulma.sass'
-
-  .docs
-    background-color: #333333
-    border-bottom: 1px solid rgba(255,255,255,.1)
-
-    +mobile
-      .nav-toggle:hover
-        background-color: lighten(#333333, 5%)
-
-      .nav-toggle > span
-        background-color: white
-
-    +desktop
-      .nav-item
-        color: #ccc
-
-        &:hover
-          color: white
-
-        .title
-          color: white
-
-  /* .router-link-active
-    border-bottom: 3px solid $primary !important
-    color: $primary  !important
-    padding-bottom: calc(0.75rem - 3px) !important */
-</style>

@@ -135,7 +135,7 @@
 </script>
 
 <style lang="sass" scoped>
-  @import '../../../node_modules/bulma/bulma.sass'
+  @import '../../styles/bulma'
 
   .hero.search > .hero-body
     padding: 20px
