@@ -13,14 +13,14 @@
                 <div class="content doc-content" v-html="content"></div>
 
                 <div class="block">
-                  <router-link v-if="files[index - 1]" :to="`/docs/${category}/${files[index - 1].path}`" class="button is-info is-outlined">
+                  <router-link v-if="files[index - 1]" :to="`/docs/${category}/${files[index - 1].path}`" id="nav-top" class="button is-info is-outlined">
                     <span class="icon is-small">
                       <i class="fa fa-arrow-left"></i>
                     </span>
                     <span>{{ files[index - 1].title }}</span>
                   </router-link>
 
-                  <router-link v-if="files[index + 1]" :to="`/docs/${category}/${files[index + 1].path}`" class="button is-info is-pulled-right">
+                  <router-link v-if="files[index + 1]" :to="`/docs/${category}/${files[index + 1].path}`" id="nav-top" class="button is-info is-pulled-right">
                     <span>{{ files[index + 1].title }}</span>
                     <span class="icon is-small">
                       <i class="fa fa-arrow-right"></i>
@@ -32,7 +32,7 @@
               <div class="column">
                 <ul>
                   <li v-for="file of files">
-                    <router-link :to="`/docs/${category}/${file.path}`" append>{{ file.title }}</router-link>
+                    <router-link :to="`/docs/${category}/${file.path}`" append id="nav-top">{{ file.title }}</router-link>
                   </li>
                 </ul>
               </div>
@@ -48,6 +48,7 @@
 
 <script>
   import Vue from 'vue';
+  import $ from 'jquery';
   import request from 'superagent';
   import yaml from 'js-yaml';
   import docs from '../../docs';
@@ -80,6 +81,12 @@
           this.$data.content = Vue.filter('marked')(res2.text);
 
           this.$data.loaded = true;
+
+          $(() => {
+            $('[id=nav-top]').click(() => {
+              $('html, body').animate({ scrollTop: 0 }, 'fast');
+            });
+          });
         })();
       },
     },
