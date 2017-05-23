@@ -13,19 +13,19 @@
                 <div class="content doc-content" v-html="content"></div>
 
                 <div class="block">
-                  <router-link v-if="files[index - 1]" :to="`/docs/${category}/${files[index - 1].path}`" id="nav-top" class="button is-info is-outlined">
-                    <span class="icon is-small">
-                      <i class="fa fa-arrow-left"></i>
-                    </span>
-                    <span>{{ files[index - 1].title }}</span>
-                  </router-link>
+                    <router-link v-if="files[index - 1]" :to="`/docs/${category}/${files[index - 1].path}`" id="nav-top" class="button is-info is-outlined">
+                      <span class="icon is-small">
+                        <i class="fa fa-arrow-left"></i>
+                      </span>
+                      <span>{{ files[index - 1].title }}</span>
+                    </router-link>
 
-                  <router-link v-if="files[index + 1]" :to="`/docs/${category}/${files[index + 1].path}`" id="nav-top" class="button is-info is-pulled-right">
-                    <span>{{ files[index + 1].title }}</span>
-                    <span class="icon is-small">
-                      <i class="fa fa-arrow-right"></i>
-                    </span>
-                  </router-link>
+                    <router-link v-if="files[index + 1]" :to="`/docs/${category}/${files[index + 1].path}`" id="nav-top" class="button is-info is-pulled-right">
+                      <span>{{ files[index + 1].title }}</span>
+                      <span class="icon is-small">
+                        <i class="fa fa-arrow-right"></i>
+                      </span>
+                    </router-link>
                 </div>
               </div>
 
@@ -61,33 +61,31 @@
     },
 
     methods: {
-      handleRoute() {
+      async handleRoute() {
         this.$data.loaded = false;
 
-        (async () => {
-          const page = docs.find(o => o.path === this.$route.params.category);
+        const page = docs.find(o => o.path === this.$route.params.category);
 
-          const res = await request.get(`https://raw.githubusercontent.com/${page.repo}/master/docs/index.yml`).buffer();
-          const files = yaml.safeLoad(res.text)[this.$route.params.category];
-          const index = files.findIndex(o => o.path === (this.$route.params.file || 'index'));
-          const file = files[index];
+        const res = await request.get(`https://raw.githubusercontent.com/${page.repo}/master/docs/index.yml`).buffer();
+        const files = yaml.safeLoad(res.text)[this.$route.params.category];
+        const index = files.findIndex(o => o.path === (this.$route.params.file || 'index'));
+        const file = files[index];
 
-          this.$data.page = page;
-          this.$data.file = file;
-          this.$data.files = files;
-          this.$data.index = index;
+        this.$data.page = page;
+        this.$data.file = file;
+        this.$data.files = files;
+        this.$data.index = index;
 
-          const res2 = await request.get(`https://raw.githubusercontent.com/${page.repo}/master/docs/${page.path}/${file.path}.md`).buffer();
-          this.$data.content = Vue.filter('marked')(res2.text);
+        const res2 = await request.get(`https://raw.githubusercontent.com/${page.repo}/master/docs/${page.path}/${file.path}.md`).buffer();
+        this.$data.content = Vue.filter('marked')(res2.text);
 
-          this.$data.loaded = true;
+        this.$data.loaded = true;
 
-          $(() => {
-            $('[id=nav-top]').click(() => {
-              $('html, body').animate({ scrollTop: 0 }, 'fast');
-            });
+        $(() => {
+          $('[id=nav-top]').click(() => {
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
           });
-        })();
+        });
       },
     },
 
@@ -105,6 +103,12 @@
 
 <style lang="sass">
   @import '../../styles/bulma'
+
+  .docs
+    .button
+      +mobile
+        width: 100%
+        margin-bottom: 20px
 
   .docs .doc-content
     pre
