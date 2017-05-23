@@ -136,6 +136,7 @@ module.exports = plugin;</code></pre>
     font-family: 'Montserrat', sans-serif
     text-transform: uppercase
     font-size: 2.75em
+    font-weight: 900
 
   .hljs
     padding: 1.25rem 1.5rem

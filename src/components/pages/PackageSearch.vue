@@ -52,10 +52,11 @@
     packages: [],
   };
 
-  const defaultPackages = ['caramel', 'sierra'];
+  const defaultPackages = ['caramel', 'sierra', 'sass-mq'];
   const logos = {
     sierra: 'https://sierra-library.github.io/img/logo.png',
     caramel: '/static/caramel.svg',
+    'sass-mq': 'https://avatars3.githubusercontent.com/u/9341289?v=3&s=500',
   };
 
   async function getDefault(self) {
