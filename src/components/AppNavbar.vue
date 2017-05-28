@@ -11,11 +11,33 @@
         <router-link to="/packages" class="nav-item is-tab is-hidden-mobile">Packages</router-link>
         <router-link to="/unify" class="nav-item is-tab is-hidden-mobile">Unify</router-link>
       </div>
+
+      <div class="nav-center">
+        <a class="nav-item" href="https://github.com/diamondpkg/diamond" target="_blank">
+          <span class="icon">
+            <i class="socicon-github"></i>
+          </span>
+        </a>
+
+        <a class="nav-item" href="https://npmjs.com/diamondpkg" target="_blank">
+          <span class="icon">
+            <i class="socicon-twitter"></i>
+          </span>
+        </a>
+
+        <a class="nav-item" href="https://discord.gg/ZeX76Zy" target="_blank">
+          <span class="icon">
+            <i class="socicon-discord"></i>
+          </span>
+        </a>
+      </div>
+
       <span class="nav-toggle">
         <span></span>
         <span></span>
         <span></span>
       </span>
+
       <div class="nav-right nav-menu">
         <router-link to="/" class="nav-item is-tab is-hidden-tablet">Home</router-link>
         <router-link to="/docs" class="nav-item is-tab is-hidden-tablet">Docs</router-link>
@@ -31,22 +53,6 @@
         <a class="nav-item is-tab" id="logout" v-if="user">Log out</a>
         <router-link to="/login" class="nav-item is-tab" v-else>Log In</router-link>
         <router-link to="/register" class="nav-item is-tab" v-if="!user">Register</router-link>
-        
-        <a class="nav-item" href="https://discord.gg/ZeX76Zy" target="_blank">
-          <span class="is-tab is-hidden-tablet">Discord</span>
-          <span class="icon is-hidden-mobile">
-          </span>
-        </a>
-        <a class="nav-item" href="https://npmjs.com/diamondpkg" target="_blank">
-        <span class="is-tab is-hidden-tablet">npm</span>
-          <span class="icon is-hidden-mobile">
-          </span>
-        </a>
-        <a class="nav-item" href="https://github.com/diamondpkg/diamond" target="_blank">
-          <span class="is-tab is-hidden-tablet">GitHub</span>
-          <span class="icon is-hidden-mobile">
-          </span>
-        </a>
       </div>
     </div>
   </nav>
