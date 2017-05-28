@@ -19,7 +19,7 @@
           </span>
         </a>
 
-        <a class="nav-item" href="https://npmjs.com/diamondpkg" target="_blank">
+        <a class="nav-item" href="https://twitter.com/diamondpackage" target="_blank">
           <span class="icon">
             <i class="socicon-twitter"></i>
           </span>
