@@ -22,6 +22,20 @@
         </div>
       </div>
 
+      <div id="docs-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Docs</p>
+            <button id="docs-modal-close" class="delete"></button>
+          </header>
+          <section class="modal-card-body">
+            Docs are automatically built with <a href="https://sassdoc.com">SassDoc</a> which only supports
+            Sass mixins, functions, and variables. This only documents a subset of packages.
+          </section>
+        </div>
+      </div>
+
       <loading class="loading animated" v-if="!loaded" v-bind:class="{ fadeOut: loaded }"/>
       <div class="container animated" v-else v-bind:class="{ fadeIn: loaded }">
         <div class="columns">
@@ -51,6 +65,12 @@
 
                 <h2 class="subtitle is-4 no-margin">Use</h2>
                 <pre><code class="nohighlight">$ diamond install {{ name }}</code></pre>
+
+                <br>
+
+                <h2 class="subtitle is-4 no-margin">Docs <small>Provided by Sass.Style</small></h2>
+                <p><strong><a :href="`https://docs.sass.style/${name}`">docs.sass.style/{{ name }}</a></strong></p>
+                <p>Docs may not always be present. <a id="docs">Learn why.</a></p>
 
                 <br>
 
@@ -187,6 +207,14 @@
 
             $('#badge-modal-close').click(() => {
               $('#badge-modal').removeClass('is-active');
+            });
+
+            $('#docs').click(() => {
+              $('#docs-modal').addClass('is-active');
+            });
+
+            $('#docs-modal-close').click(() => {
+              $('#docs-modal').removeClass('is-active');
             });
 
             Highcharts.chart('graph', {
