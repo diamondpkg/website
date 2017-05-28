@@ -15,6 +15,10 @@
                 <b>Install: </b>
                 <code>npm i -g diamondpkg</code>
               </h2>
+              
+              <p class="github is-hidden-mobile">
+                <iframe src="https://ghbtns.com/github-btn.html?user=diamondpkg&repo=diamond&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+              </p>
             </div>
           </div>
         </div>
@@ -160,6 +164,12 @@
 
     &:hover
       border-color: white !important
+
+  p.github
+    margin-left: 20px
+    line-height: 2.285em
+    display: inline-block
+    vertical-align: middle
 
   .bottom
     margin-top: 50px !important
