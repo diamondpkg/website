@@ -144,6 +144,11 @@
   .search-result > .hero-body
     padding: 20px
 
+  input:hover
+    outline: none
+    highlight: none
+    border-color: $input-border !important
+
   input:focus
     outline: none
     highlight: none
