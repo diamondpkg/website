@@ -27,77 +27,93 @@
       <section class="hero">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">
-              Thousands of Packages
-            </h1>
-            <h2 class="subtitle">
-              diamond works with any package on npm, GitHub, or GitLab.
-            </h2>
+            <div class="columns">
+              <div class="column">
+                <h1 class="title">
+                  Thousands of Packages
+                </h1>
+                <h2 class="subtitle">
+                  diamond works with any package on npm, GitHub, or GitLab.
+                </h2>
+              </div>
+
+              <div class="column">
+                <h1 class="title">
+                  Cross-preprocessor
+                </h1>
+                <h2 class="subtitle">
+                  Sass packages work with Less, Less packages work with Sass, and so on. You can mix and match packages of any preprocessor.
+                </h2>
+              </div>
+
+              <div class="column">
+                <h1 class="title">
+                  Multipurpose
+                </h1>
+                <h2 class="subtitle">
+                  diamond can distribute Sass functions, Sass mixins, Sass importers, Less plugins, postprocessors, and just plain old libraries like Bootstrap.
+                </h2>
+              </div>
+            </div>
+
+            <div class="columns">
+              <div class="column">
+                <h1 class="title">
+                  Secure
+                </h1>
+                <h2 class="subtitle">
+                  diamond uses checksums to verify every package on install.
+                </h2>
+              </div>
+
+              <div class="column">
+                <h1 class="title">
+                  Fast
+                </h1>
+                <h2 class="subtitle">
+                  diamond caches every npm package you install so you dont have to redownload it ever again.
+                </h2>
+              </div>
+
+              <div class="column">
+                <h1 class="title">
+                  Flatpacked
+                </h1>
+                <h2 class="subtitle">
+                  Packages are flatpacked, so you don't need several seperate installs of the same package.
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="hero">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Cross-preprocessor
-            </h1>
-            <h2 class="subtitle">
-              Sass packages work with Less, Less packages work with Sass, and so on. You can mix and match packages of any preprocessor.
-            </h2>
-          </div>
-        </div>
-      </section>
+      <div class="container">
+        <hr>
+      </div>
 
       <section class="hero">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">
-              Multipurpose
-            </h1>
-            <h2 class="subtitle">
-              diamond can distribute Sass functions, Sass mixins, Sass importers, Less plugins, postprocessors, and just plain old libraries like Bootstrap.
-            </h2>
-          </div>
-        </div>
-      </section>
+            <h1 class="title is-2">Featured Packages</h1>
+            <div class="columns">
+              <div class="column" v-for="package of packages">
+                <div class="columns">
+                  <div v-if="package.logo" class="column is-narrow is-hidden-mobile">
+                    <img :src="package.logo" alt="logo" class="image is-64x64">
+                  </div>
 
-      <section class="hero">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Secure
-            </h1>
-            <h2 class="subtitle">
-              diamond uses checksums to verify every package on install.
-            </h2>
-          </div>
-        </div>
-      </section>
-
-      <section class="hero">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Fast
-            </h1>
-            <h2 class="subtitle">
-              diamond caches every npm package you install so you dont have to redownload it ever again.
-            </h2>
-          </div>
-        </div>
-      </section>
-
-      <section class="hero">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Flatpacked
-            </h1>
-            <h2 class="subtitle">
-              Packages are flatpacked, so you don't need several seperate installs of the same package.
-            </h2>
+                  <div class="column">
+                      <h1 class="title package-name">
+                        <router-link :to="{ path: `/package/${package.name}` }">
+                          <strong>{{package.name}}</strong> <small>{{package.latest}}</small>
+                        </router-link>
+                      </h1>
+                    <div class="subtitle">{{package.description}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -126,18 +142,67 @@
 </template>
 
 <script>
+  import request from 'superagent/superagent';
   import AppNavbar from '@/components/AppNavbar';
   import AppFooter from '@/components/AppFooter';
+  import { registry } from '@/util';
+
+  const data = {
+    packages: [],
+  };
+
+  const defaultPackages = ['caramel', 'sierra', 'sass-mq'];
+  const logos = {
+    sierra: 'https://sierra-library.github.io/img/logo.png',
+    caramel: '/static/caramel.svg',
+    'sass-mq': 'https://avatars3.githubusercontent.com/u/9341289?v=3&s=500',
+  };
+
+  async function getDefault(self) {
+    const promises = [];
+    for (const name of defaultPackages) {
+      promises.push(request.get(`${registry()}/v1/package/${name}`));
+    }
+
+    const pkgs = [];
+    for (const res of await Promise.all(promises)) {
+      pkgs.push({
+        name: res.body.name,
+        description: res.body.versions[res.body.tags.latest].data.description,
+        latest: res.body.tags.latest,
+        logo: logos[res.body.name] || null,
+      });
+    }
+
+    pkgs.sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+
+    self.$data.packages = pkgs;
+  }
 
   export default {
     name: 'home',
-    components: { AppNavbar, AppFooter },
+    components: {
+      AppNavbar,
+      AppFooter,
+    },
+
+    data() {
+      getDefault(this);
+      return data;
+    },
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
   @import '../../styles/bulma'
+
+  .package-name > a
+    color: $text !important
 
   .lang
     margin-right: 5px
