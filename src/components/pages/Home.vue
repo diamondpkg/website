@@ -33,7 +33,7 @@
                   Thousands of Packages
                 </h1>
                 <h2 class="subtitle">
-                  diamond works with any package on npm, GitHub, or GitLab.
+                  diamond works with any package on diamond, npm, GitHub, or GitLab.
                 </h2>
               </div>
 
@@ -77,10 +77,10 @@
 
               <div class="column">
                 <h1 class="title">
-                  Flatpacked
+                  Offline Mode
                 </h1>
                 <h2 class="subtitle">
-                  Packages are flatpacked, so you don't need several seperate installs of the same package.
+                  You can install any package you have installed before with no internet connection.
                 </h2>
               </div>
             </div>

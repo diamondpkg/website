@@ -69,7 +69,7 @@
           this.$data.email = res.body.email;
           this.$data.packages = res.body.packages;
           this.$data.verified = res.body.verified;
-          this.$data.avatar = `http://www.gravatar.com/avatar/${
+          this.$data.avatar = `https://www.gravatar.com/avatar/${
             crypto.createHash('md5').update(res.body.email, 'utf8').digest('hex')}?s=512&d=retro`;
           this.$data.signedIn = res.body.username === (localStorage.user ? JSON.parse(localStorage.user).username : null);
           this.$data.loaded = true;

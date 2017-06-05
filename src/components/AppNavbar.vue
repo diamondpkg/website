@@ -3,7 +3,7 @@
     <div class="container">
       <div class="nav-left">
         <router-link to="/" class="nav-item">
-          <img src="../assets/Diamond.png" alt="Bulma logo">
+          <img src="../assets/Diamond.png" alt="logo">
           <h4 class="title is-4">&nbsp;diamond</h4>
         </router-link>
         <router-link to="/" class="nav-item is-tab is-hidden-mobile">Home</router-link>
@@ -74,7 +74,7 @@
       if (localStorage.user) {
         return {
           user: JSON.parse(localStorage.user),
-          avatar: `http://www.gravatar.com/avatar/${crypto.createHash('md5').update(JSON.parse(localStorage.user).email, 'utf8').digest('hex')}?d=retro`,
+          avatar: `https://www.gravatar.com/avatar/${crypto.createHash('md5').update(JSON.parse(localStorage.user).email, 'utf8').digest('hex')}?d=retro`,
         };
       }
       return {};
