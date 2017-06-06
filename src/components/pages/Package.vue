@@ -43,7 +43,7 @@
             <section class="hero">
               <div class="hero-body">
                 <div class="is-hidden-tablet">
-                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
+                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small> <span :class="`tag ${lang}`"></span></h1>
                   <h2 class="subtitle main">{{ description }}</h2>
                   <hr>
                 </div>
@@ -53,15 +53,15 @@
             </section>
           </div>
 
+          <hr class="is-hidden-tablet">
+
           <div class="column right">
             <section class="hero">
               <div class="hero-body">
                 <div class="is-hidden-mobile">
-                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small></h1>
+                  <h1 class="title"><strong>{{ name }}</strong> <small>{{ latest }}</small> <span :class="`tag ${lang}`"></span></h1>
                   <h2 class="subtitle main">{{ description }}</h2>
                 </div>
-
-                <hr class="is-hidden-tablet">
 
                 <h2 class="subtitle is-4 no-margin">Use</h2>
                 <pre><code class="nohighlight">$ diamond install {{ name }}</code></pre>
@@ -98,7 +98,11 @@
                 <h2 class="subtitle is-4 no-margin">Authors</h2>
                 <ul class="margin-left">
                   <li v-for="author in authors">
-                    <router-link :to="{ path: `/user/${author.username}` }">{{author.username}}</router-link>
+                    <router-link class="author" :to="{ path: `/user/${author.username}` }">
+                      <img :src="`https://www.gravatar.com/avatar/${
+                        crypto.createHash('md5').update(author.email, 'utf8').digest('hex')}?s=512&d=retro`">
+                      <span>{{author.username}}</span>
+                    </router-link>
                   </li>
                 </ul>
 
@@ -139,6 +143,7 @@
 <script>
   import $ from 'jquery';
   import Vue from 'vue';
+  import crypto from 'crypto';
   import moment from 'moment';
   import Highcharts from 'highcharts';
   import request from 'superagent/superagent';
@@ -148,10 +153,12 @@
 
   const data = {
     moment,
+    crypto,
     name: '',
     readme: '',
     description: '',
     latest: '',
+    lang: false,
     versions: {},
     authors: [],
     tags: {},
@@ -185,6 +192,12 @@
           this.$data.tags = res.body.tags;
           this.$data.downloads = res.body.downloads;
           this.$data.weeklyDownloads = res.body.weeklyDownloads;
+
+          const main = res.body.versions[res.body.tags.latest].data.main || '';
+          this.$data.lang = ['sass', 'scss', 'less', 'styl'].includes(main.substr(main.length - 4)) ? main.substr(main.length - 4) : false;
+
+          console.log(this.$data.lang);
+
           this.$data.loaded = true;
 
           const now = new Date(Date.now());
@@ -313,8 +326,49 @@
 </style>
 
 <style lang="sass" scoped>
+  @import '../../styles/bulma'
+
   .wrapper
     position: relative
+
+  .author
+    display: inline-block
+
+    span
+      vertical-align: middle
+
+    img
+      height: 1.25rem
+      vertical-align: middle
+      border-radius: 3px
+
+  .sass
+    background: $sass-color
+    color: white
+
+    &:after
+      content: 'Sass'
+
+  .scss
+    background: $sass-color
+    color: white
+
+    &:after
+      content: 'Sass'
+
+  .less
+    background: $less-color
+    color: white
+
+    &:after
+      content: 'Less'
+
+  .stylus
+    background: $stylus-color
+    color: white
+
+    &:after
+      content: 'Stylus'
 
   .loading
     position: absolute

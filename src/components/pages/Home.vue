@@ -106,7 +106,7 @@
                   <div class="column">
                       <h1 class="title package-name">
                         <router-link :to="{ path: `/package/${package.name}` }">
-                          <strong>{{package.name}}</strong> <small>{{package.latest}}</small>
+                          <strong>{{package.name}}</strong> <small>{{package.latest}}</small> <span :class="`tag ${package.lang}`"></span>
                         </router-link>
                       </h1>
                     <div class="subtitle">{{package.description}}</div>
@@ -166,11 +166,13 @@
 
     const pkgs = [];
     for (const res of await Promise.all(promises)) {
+      const main = res.body.versions[res.body.tags.latest].data.main || '';
       pkgs.push({
         name: res.body.name,
         description: res.body.versions[res.body.tags.latest].data.description,
         latest: res.body.tags.latest,
         logo: logos[res.body.name] || null,
+        lang: ['sass', 'scss', 'less', 'styl'].includes(main.substr(main.length - 4)) ? main.substr(main.length - 4) : false,
       });
     }
 
@@ -200,6 +202,34 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
   @import '../../styles/bulma'
+
+  .sass
+    background: $sass-color
+    color: white
+
+    &:after
+      content: 'Sass'
+
+  .scss
+    background: $sass-color
+    color: white
+
+    &:after
+      content: 'Sass'
+
+  .less
+    background: $less-color
+    color: white
+
+    &:after
+      content: 'Less'
+
+  .stylus
+    background: $stylus-color
+    color: white
+
+    &:after
+      content: 'Stylus'
 
   .package-name > a
     color: $text !important

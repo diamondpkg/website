@@ -26,7 +26,7 @@
               <div class="column">
                   <h1 class="title package-name">
                     <router-link :to="{ path: `/package/${package.name}` }">
-                      <strong>{{package.name}}</strong> <small>{{package.latest}}</small>
+                      <strong>{{package.name}}</strong> <small>{{package.latest}}</small> <span :class="`tag ${package.lang}`"></span>
                     </router-link>
                   </h1>
                 <div class="subtitle">{{package.description}}</div>
@@ -67,11 +67,13 @@
 
     const pkgs = [];
     for (const res of await Promise.all(promises)) {
+      const main = res.body.versions[res.body.tags.latest].data.main || '';
       pkgs.push({
         name: res.body.name,
         description: res.body.versions[res.body.tags.latest].data.description,
         latest: res.body.tags.latest,
         logo: logos[res.body.name] || null,
+        lang: ['sass', 'scss', 'less', 'styl'].includes(main.substr(main.length - 4)) ? main.substr(main.length - 4) : false,
       });
     }
 
@@ -106,11 +108,14 @@
               if (err) return;
               const pkgs = [];
               for (const pkg of res.body) {
+                const main = pkg.versions[pkg.tags.latest].data.main || '';
+
                 pkgs.push({
                   name: pkg.name,
                   description: pkg.versions[pkg.tags.latest].data.description,
                   latest: pkg.tags.latest,
                   logo: logos[pkg.name] || null,
+                  lang: ['sass', 'scss', 'less', 'styl'].includes(main.substr(main.length - 4)) ? main.substr(main.length - 4) : false,
                 });
               }
 
@@ -137,6 +142,34 @@
 
 <style lang="sass" scoped>
   @import '../../styles/bulma'
+
+  .sass
+    background: $sass-color
+    color: white
+
+    &:after
+      content: 'Sass'
+
+  .scss
+    background: $sass-color
+    color: white
+
+    &:after
+      content: 'Sass'
+
+  .less
+    background: $less-color
+    color: white
+
+    &:after
+      content: 'Less'
+
+  .stylus
+    background: $stylus-color
+    color: white
+
+    &:after
+      content: 'Stylus'
 
   .hero.search > .hero-body
     padding: 20px
