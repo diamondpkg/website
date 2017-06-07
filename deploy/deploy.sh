@@ -4,7 +4,7 @@
 set -e
 
 npm i -g diamondpkg/diamond#generator-rewrite
-dimaond i
+diamond i
 
 if [ "$TRAVIS_BRANCH" != "stable" -o -n "$TRAVIS_TAG" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then
   echo -e "\e[36m\e[1mNot building for a stable branch push - building without deploying."
