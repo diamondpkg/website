@@ -168,7 +168,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-  @import '../../styles/bulma'
+  @import '../../styles/_bulma.sass'
 
   .hidden
     display: none

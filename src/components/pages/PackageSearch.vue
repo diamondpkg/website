@@ -141,7 +141,7 @@
 </script>
 
 <style lang="sass" scoped>
-  @import '../../styles/bulma'
+  @import '../../styles/_bulma.sass'
 
   .sass
     background: $sass-color

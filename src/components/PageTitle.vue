@@ -18,7 +18,7 @@
 </script>
 
 <style lang="sass" scoped>
-  @import '../styles/bulma'
+  @import '../styles/_bulma.sass'
 
   .main-text
     font-family: 'Montserrat', sans-serif

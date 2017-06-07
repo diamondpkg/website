@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bulma": "npm:bulma@^0.4.2"
+  },
+  "name": "diamond-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.sass"
+}

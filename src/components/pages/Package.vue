@@ -196,8 +196,6 @@
           const main = res.body.versions[res.body.tags.latest].data.main || '';
           this.$data.lang = ['sass', 'scss', 'less', 'styl'].includes(main.substr(main.length - 4)) ? main.substr(main.length - 4) : false;
 
-          console.log(this.$data.lang);
-
           this.$data.loaded = true;
 
           const now = new Date(Date.now());
@@ -326,7 +324,7 @@
 </style>
 
 <style lang="sass" scoped>
-  @import '../../styles/bulma'
+  @import '../../styles/_bulma.sass'
 
   .wrapper
     position: relative

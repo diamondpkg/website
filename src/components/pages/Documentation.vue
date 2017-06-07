@@ -16,12 +16,14 @@
             </p>
 
             <div class="tile is-ancestor">
-              <div class="tile is-parent is-4" v-for="page in pages">
-                <article class="tile is-child box">
-                  <p class="title">{{ page.title }}</p>
-                  <p class="subtitle">{{ page.desc }}</p>
-                  <router-link :to="page.path" append>Read more</router-link>
-                </article>
+              <div class="tile page-tile is-parent is-4" v-for="page in pages">
+                <router-link :to="page.path" append>
+                  <article class="tile is-child box">
+                    <p class="title">{{ page.title }}</p>
+                    <p class="subtitle">{{ page.desc }}</p>
+                    <router-link :to="page.path" append>Read more</router-link>
+                  </article>
+                </router-link>
               </div>
             </div>
           </div>
@@ -70,7 +72,17 @@
 </script>
 
 <style lang="sass" scoped>
-  @import '../../styles/bulma'
+  @import '../../styles/_bulma.sass'
+
+  .page-tile
+    article
+
+      &:hover
+        cursor: pointer
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.3) !important
+
+        a
+          color: black
 
   .search
     margin-bottom: 20px

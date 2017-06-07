@@ -10,3 +10,4 @@ selenium-debug.log
 
 deploy/deploy-key*
 !deploy/deploy-key.enc
+diamond/
