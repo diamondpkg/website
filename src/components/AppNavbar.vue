@@ -77,7 +77,7 @@
           avatar: `https://www.gravatar.com/avatar/${crypto.createHash('md5').update(JSON.parse(localStorage.user).email, 'utf8').digest('hex')}?d=retro`,
         };
       }
-      return {};
+      return { user: false, avatar: false };
     },
 
     methods: {
@@ -89,6 +89,7 @@
 
           $('#logout').click(() => {
             delete localStorage.user;
+            delete localStorage.token;
             this.$router.push('/');
           });
         });

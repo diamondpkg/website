@@ -63,6 +63,24 @@
   import AppFooter from '@/components/AppFooter';
   import { registry } from '@/util';
 
+  function login(router) {
+    request.post(`${registry()}/v1/user/login`)
+      .send({ username: $('#username').first().val(), password: $('#password').first().val() })
+      .end((err, res) => {
+        if (res.statusCode === 401) {
+          $('#username').addClass('is-danger');
+          $('#password').addClass('is-danger');
+          $('#invalid').removeClass('hidden');
+        } else if (res.statusCode !== 200) {
+          $('#error').removeClass('hidden');
+        } else {
+          localStorage.token = res.body.token;
+          localStorage.user = JSON.stringify(res.body.user);
+          router.push({ name: 'user', params: { user: res.body.user.username } });
+        }
+      });
+  }
+
   export default {
     name: 'log-in',
     components: { AppNavbar, AppFooter },
@@ -74,23 +92,12 @@
         }
 
         $(() => {
+          $('#username, #password').keypress((e) => {
+            if (e.which === 13) login(this.$router);
+          });
+
           $('#button').click(() => {
-            request.get(`${registry()}/v1/user`)
-              .auth($('#username').first().val(), $('#password').first().val())
-              .end((err, res) => {
-                if (res.statusCode === 401) {
-                  $('#username').addClass('is-danger');
-                  $('#password').addClass('is-danger');
-                  $('#invalid').removeClass('hidden');
-                } else if (res.statusCode !== 200) {
-                  $('#error').removeClass('hidden');
-                } else {
-                  const user = res.body;
-                  delete user.packages;
-                  localStorage.user = JSON.stringify(user);
-                  this.$router.push({ name: 'user', params: { user: user.username } });
-                }
-              });
+            login(this.$router);
           });
         });
       },
