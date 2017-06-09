@@ -68,9 +68,14 @@
 
                 <br>
 
-                <h2 class="subtitle is-4 no-margin">Docs <small>Provided by Sass.Style</small></h2>
-                <p><strong><a :href="`https://docs.sass.style/${name}`">docs.sass.style/{{ name }}</a></strong></p>
+                <h2 class="subtitle is-4 no-margin">Docs</h2>
+                <p><strong><a :href="`https://docs.diamondpkg.org/${name}`">docs.diamondpkg.org/{{ name }}</a></strong></p>
                 <p>Docs may not always be present. <a id="docs">Learn why.</a></p>
+
+                <br>
+
+                <h2 class="subtitle is-4 no-margin">CDN</h2>
+                <pre><code class="nohighlight">https://cdn.diamondpkg.org/{{ name }}/{{ latest }}</code></pre>
 
                 <br>
 
