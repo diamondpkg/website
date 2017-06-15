@@ -75,7 +75,7 @@
                 <br>
 
                 <h2 class="subtitle is-4 no-margin">CDN</h2>
-                <pre><code class="nohighlight">https://cdn.diamondpkg.org/{{ name }}/{{ latest }}</code></pre>
+                <pre><code class="nohighlight">https://cdn.diamondpkg.org/v1/{{ name }}/{{ latest }}</code></pre>
 
                 <br>
 
