@@ -151,7 +151,6 @@
     packages: [],
   };
 
-  const defaultPackages = ['caramel', 'sierra', 'sass-mq'];
   const logos = {
     sierra: 'https://sierra-library.github.io/img/logo.png',
     caramel: '/static/caramel.svg',
@@ -159,28 +158,17 @@
   };
 
   async function getDefault(self) {
-    const promises = [];
-    for (const name of defaultPackages) {
-      promises.push(request.get(`${registry()}/v1/package/${name}`));
-    }
-
     const pkgs = [];
-    for (const res of await Promise.all(promises)) {
-      const main = res.body.versions[res.body.tags.latest].data.main || '';
+    for (const pkg of (await request.get(`${registry()}/v1/packages`)).body) {
+      const main = pkg.versions[pkg.tags.latest].data.main || '';
       pkgs.push({
-        name: res.body.name,
-        description: res.body.versions[res.body.tags.latest].data.description,
-        latest: res.body.tags.latest,
-        logo: logos[res.body.name] || null,
+        name: pkg.name,
+        description: pkg.versions[pkg.tags.latest].data.description,
+        latest: pkg.tags.latest,
+        logo: logos[pkg.name] || null,
         lang: ['sass', 'scss', 'less', 'styl'].includes(main.substr(main.length - 4)) ? main.substr(main.length - 4) : false,
       });
     }
-
-    pkgs.sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    });
 
     self.$data.packages = pkgs;
   }
