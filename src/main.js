@@ -11,6 +11,7 @@ import UserPageComponent from './components/pages/User';
 import LogInPageComponent from './components/pages/LogIn';
 import RegisterPageComponent from './components/pages/Register';
 import NotFoundPageComponent from './components/pages/NotFound';
+import GraphiQLPageComponent from './components/pages/GraphiQL';
 import DocumentationPageComponent from './components/pages/Documentation';
 import LoadingComponent from './components/Loading';
 import AppNavbar from './components/AppNavbar';
@@ -50,6 +51,8 @@ const router = new VueRouter({
 
     { path: '/login', name: 'login', component: LogInPageComponent },
     { path: '/register', name: 'register', component: RegisterPageComponent },
+
+    { path: '/graphiql', name: 'graphiql', component: GraphiQLPageComponent },
 
     // Catch-all
     // { path: '/docs/*', component: DocsUnknownRoutePageComponent },

@@ -143,9 +143,11 @@
                 if (res.statusCode !== 200) {
                   $('#error').removeClass('hidden');
                 } else {
-                  const user = res.body;
+                  const user = res.body.user;
+                  const token = res.body.token;
                   delete user.packages;
                   localStorage.user = JSON.stringify(user);
+                  localStorage.token = token;
                   this.$router.push({ name: 'user', params: { user: user.username } });
                 }
               });

@@ -159,7 +159,7 @@
 
   async function getDefault(self) {
     const pkgs = [];
-    for (const pkg of (await request.get(`${registry()}/v1/packages`)).body) {
+    for (const pkg of (await request.get(`${registry()}/v1/packages?limit=3`)).body) {
       const main = pkg.versions[pkg.tags.latest].data.main || '';
       pkgs.push({
         name: pkg.name,

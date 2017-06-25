@@ -64,6 +64,9 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
+// serve graphiql
+app.use('/graphiql.html', express.static('./graphiql.html'));
+
 var uri = 'http://localhost:' + port
 
 var _resolve
