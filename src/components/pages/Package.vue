@@ -55,7 +55,7 @@
 
           <hr class="is-hidden-tablet">
 
-          <div class="column right">
+          <div class="column right is-3">
             <section class="hero">
               <div class="hero-body">
                 <div class="is-hidden-mobile">
