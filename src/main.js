@@ -22,6 +22,7 @@ import DocsCategoryComponent from './components/pages/DocumentationCategory';
 // Set up the router!
 Vue.use(VueRouter);
 const router = new VueRouter({
+  mode: 'history',
   routes: [
     { path: '/', name: 'home', component: HomePageComponent },
     { path: '/unify', name: 'unify', component: UnifyPageComponent },
